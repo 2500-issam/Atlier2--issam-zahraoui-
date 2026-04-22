@@ -213,15 +213,3 @@ python manage.py runserver
 
 ---
 
-## 👤 Auteur
-
-**Nada Chahbane**
-École Mohammadia d'Ingénieurs — Rabat
-Année universitaire 2025–2026
-Encadré par : Mr. A. Bousselham
-
----
-
-## 📄 Licence
-
-Projet académique — École Mohammadia d'Ingénieurs
