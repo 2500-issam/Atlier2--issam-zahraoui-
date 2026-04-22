@@ -56,53 +56,6 @@ Les compétences visées au terme de cet atelier sont :
 Le modèle `Product` est défini dans `models.py` en héritant de `django.db.models.Model`.  
 Il décrit la structure d’un produit avec les attributs suivants :
 
-- `name` : désignation du produit (`CharField`).
-- `description` : texte descriptif libre (`TextField`).
-- `price` : montant décimal à deux chiffres (`DecimalField`).
-- `stock` : quantité disponible, toujours positive (`PositiveIntegerField`).
-- `image` : photo du produit, facultative (`ImageField`).
-- `created_at` : horodatage de création, renseigné automatiquement (`DateTimeField`).
-
-```python
-from django.db import models
-
-class Product(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    stock = models.PositiveIntegerField()
-    image = models.ImageField(upload_to='products/', blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.name
-### 3.2 Le modèle `Category` et la clé étrangère
-
-Un second modèle `Category` est introduit pour représenter les catégories de produits.  
-Un produit appartient à une seule catégorie, mais une catégorie peut regrouper plusieurs produits : c’est une relation **plusieurs‑à‑un** implémentée avec `ForeignKey`.
-
-```python
-from django.db import models
-
-class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    description = models.TextField(blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.name
-
-class Product(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    stock = models.PositiveIntegerField()
-    image = models.ImageField(upload_to='products/images', blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.name
 # 🛒 Django E-Commerce Project
 
 Un projet web développé avec le framework **Django** dans le cadre du module *Développement Web avec Python* à l'**École Mohammadia d'Ingénieurs**.
